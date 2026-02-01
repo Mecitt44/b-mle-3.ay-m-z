@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3. Ayımız Kutlu Olsun ❤️</title>
+    <style>
+        /* CSS Bölümü: Tasarım ve Görsellik */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 85%;
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+        }
+
+        h1 {
+            color: #d63384;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background-color: #fff0f5;
+            border: 2px dashed #d63384;
+            padding: 20px;
+            border-radius: 15px;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .message-text {
+            font-size: 1.2rem;
+            color: #555;
+            font-weight: 500;
+            line-height: 1.5;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        button {
+            background-color: #d63384;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(214, 51, 132, 0.4);
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #a82063;
+            transform: scale(1.05);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        /* Animasyon */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .heart {
+            color: red;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Seni Seviyorum Çünkü... <span class="heart">❤️</span></h1>
+        
+        <div class="card">
+            <p class="message-text" id="display-text">Başlamak için butona tıkla...</p>
+        </div>
+
+        <button onclick="yeniSebepGoster()">Bir Sebep Daha</button>
+    </div>
+
+    <script>
+        const sebepler = [
+         "Aynı şeye aynı anda gülmemiz.",
+         "Bana her zaman inanman.",
+         "Sesindeki o huzur veren ton.",
+         "En saçma şakalarıma bile katlanman.",
+         "Gözlerinin içindeki o ışık.",
+         "Seninle saatlerce boş yapmak.",
+         "Küçücük bir hareketinle beni gülümsetmen.",
+         "Dürüstlüğünü ve samimiyetini seviyorum.",
+         "Yanındayken zamanın nasıl geçtiğini anlamamam.",
+         "Uykulu uykulu konuşmaya çalışman.",
+         "Modum düştüğünde beni anında toparlaman.",
+         "Zevklerimizin bu kadar benzer olması.",
+         "Bana kendimi özel hissettirmen.",
+         "Seninle her şeyi konuşabiliyor olmak.",
+         "Sadece yanımda olman bile yetiyor.",
+         "Fikirlerine ve bakış açına hayranım.",
+         "Beni olduğum gibi kabul etmen.",
+         "Birlikte saçmalamayı çok seviyoruz.",
+         "En ufak bir detayda bile beni düşünmen.",
+         "Seninle geçirdiğim her anın tadı başka.",
+         "Bana kattığın o güzel enerji.",
+         "Küçük şeylerden mutlu olabilmen.",
+         "Seninleyken kendim gibi davranabilmem.",
+         "Hayatımdaki en güzel 'iyi ki'msin.",
+         "Birlikte film seçerken bile eğlenmemiz.",
+         "Bana olan güvenin ve desteğin.",
+         "Gülüşünün etrafı aydınlatması.",
+         "Sana anlatacak çok şeyimin olması.",
+         "Seninle susmak bile çok huzurlu.",
+         "Varlığınla hayatımı güzelleştirmen."
+        ];
+
+        let sonSayi = -1;
+
+        function yeniSebepGoster() {
+            // Rastgele bir sayı üret (Dizi uzunluğuna göre)
+            let rastgeleSayi = Math.floor(Math.random() * sebepler.length);
+
+            // Aynı mesajın üst üste gelmesini engellemek için kontrol
+            while (rastgeleSayi === sonSayi) {
+                rastgeleSayi = Math.floor(Math.random() * sebepler.length);
+            }
+            
+            sonSayi = rastgeleSayi;
+
+            // HTML'deki yazıyı güncelle
+            const textElement = document.getElementById("display-text");
+            
+            // Animasyonu yeniden tetiklemek için ufak bir hile
+            textElement.style.animation = 'none';
+            textElement.offsetHeight; /* trigger reflow */
+            textElement.style.animation = 'fadeIn 0.5s ease-in-out';
+            
+            textElement.innerText = sebepler[rastgeleSayi];
+        }
+    </script>
+
+</body>
+</html>
